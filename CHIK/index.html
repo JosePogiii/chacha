@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Special Message for You</title>
+  <style>
+    /* Basic styling for a full-screen, centered layout */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Message animation */
+    .message {
+      z-index: 2;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Heart styling and animation */
+    .heart {
+      width: 50px;
+      height: 50px;
+      background-color: rgb(0, 132, 255);
+      position: absolute;
+      transform: rotate(45deg);
+      animation: fall linear infinite;
+      opacity: 0.8;
+    }
+    .heart:before,
+    .heart:after {
+      content: "";
+      background-color: rgb(0, 132, 255);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+    }
+    .heart:before {
+      top: -25px;
+      left: 0;
+    }
+    .heart:after {
+      left: 25px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -50px;
+        opacity: 1;
+      }
+      100% {
+        top: 110vh;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    <h1>Hi Chacha!</h1>
+    <p>I so proud of you, most people don't know your story, your struggles, and your silent battles. Im always here for you.</p>
+    <p>Be happy always oki?</p>
+  </div>
+  <script>
+    // Function to create a heart element and animate it falling from the top
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+      heart.style.opacity = Math.random();
+      document.body.appendChild(heart);
+      // Remove the heart element after its animation completes
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+    // Create a new heart every 300 milliseconds
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
